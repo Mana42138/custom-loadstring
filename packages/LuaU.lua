@@ -56,9 +56,27 @@
 -- * luaU:endianness removed
 ----------------------------------------------------------------------]]
 
+local req = (syn and syn.request) or (http and http.request) or http_request
+
+function GetHttp(URL)
+	local Data = nil
+	local Test = req({
+        Url = URL,
+        Method = 'GET',
+	})
+	for i,v in pairs(Test) do
+		Data = v
+	end
+	return Data
+end
+
+function package(name)
+	return GetHttp("https://raw.githubusercontent.com/Mana42138/custom-loadstring/main/packages/"..name..".lua")
+end
+
 --requires luaP
 local luaU = {}
-local luaP = require(script.Parent.LuaP)
+local luaP = package("LuaP")
 
 -- mark for precompiled code ('<esc>Lua') (from lua.h)
 luaU.LUA_SIGNATURE = "\27Lua"
