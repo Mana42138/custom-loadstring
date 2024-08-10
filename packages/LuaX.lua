@@ -79,14 +79,14 @@ function GetHttp(URL)
 	for i,v in pairs(Test) do
 		Data = v
 	end
-	return Data
+	return loadstring(Data)
 end
 
 function package(name)
 	return GetHttp("https://raw.githubusercontent.com/Mana42138/custom-loadstring/main/packages/"..name..".lua")
 end
 
-local luaZ = package("LuaZ")
+local luaZ = package("LuaZ")()
 
 local luaX = {}
 
