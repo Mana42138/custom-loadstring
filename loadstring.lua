@@ -23,11 +23,15 @@ function GetHttp(URL)
 	return Data
 end
 
-local luaX = GetHttp(URL)
-local luaY = GetHttp(URL)
-local luaZ = GetHttp(URL)
-local luaU = GetHttp(URL)
-local rerubi = GetHttp(URL)
+function package(name)
+	return GetHttp("https://raw.githubusercontent.com/Mana42138/custom-loadstring/main/packages/"..name..".lua")
+end
+
+local luaX = package("LuaX")
+local luaY = package("LuaY")
+local luaZ = package("LuaZ")
+local luaU = package("LuaU")
+local rerubi = package("Rerubi")
 
 luaX:init()
 local LuaState = {}
