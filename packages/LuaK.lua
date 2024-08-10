@@ -56,9 +56,28 @@
 ----------------------------------------------------------------------]]
 
 -- requires luaP, luaX, luaY
+
+local req = (syn and syn.request) or (http and http.request) or http_request
+
+function GetHttp(URL)
+	local Data = nil
+	local Test = req({
+        Url = URL,
+        Method = 'GET',
+	})
+	for i,v in pairs(Test) do
+		Data = v
+	end
+	return Data
+end
+
+function package(name)
+	return GetHttp("https://raw.githubusercontent.com/Mana42138/custom-loadstring/main/packages/"..name..".lua")
+end
+
 local luaK = {}
-local luaP = require(script.Parent.LuaP)
-local luaX = require(script.Parent.LuaX)
+local luaP = package("LuaP")
+local luaX = package("LuaX")
 
 ------------------------------------------------------------------------
 -- constants used by code generator
