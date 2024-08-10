@@ -68,7 +68,7 @@ function GetHttp(URL)
 	for i,v in pairs(Test) do
 		Data = v
 	end
-	return Data
+	return loadstring(Data)
 end
 
 function package(name)
@@ -76,8 +76,8 @@ function package(name)
 end
 
 local luaK = {}
-local luaP = package("LuaP")
-local luaX = package("LuaX")
+local luaP = package("LuaP")()
+local luaX = package("LuaX")()
 
 ------------------------------------------------------------------------
 -- constants used by code generator
