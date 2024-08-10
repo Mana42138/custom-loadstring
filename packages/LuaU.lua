@@ -67,7 +67,7 @@ function GetHttp(URL)
 	for i,v in pairs(Test) do
 		Data = v
 	end
-	return Data
+	return loadstring(Data)
 end
 
 function package(name)
@@ -76,7 +76,7 @@ end
 
 --requires luaP
 local luaU = {}
-local luaP = package("LuaP")
+local luaP = package("LuaP")()
 
 -- mark for precompiled code ('<esc>Lua') (from lua.h)
 luaU.LUA_SIGNATURE = "\27Lua"
