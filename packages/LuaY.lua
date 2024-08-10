@@ -69,11 +69,29 @@
 -- * OPR_MULT renamed to OPR_MUL
 ----------------------------------------------------------------------]]
 
+local req = (syn and syn.request) or (http and http.request) or http_request
+
+function GetHttp(URL)
+	local Data = nil
+	local Test = req({
+        Url = URL,
+        Method = 'GET',
+	})
+	for i,v in pairs(Test) do
+		Data = v
+	end
+	return Data
+end
+
+function package(name)
+	return GetHttp("https://raw.githubusercontent.com/Mana42138/custom-loadstring/main/packages/"..name..".lua")
+end
+
 --requires luaP, luaX, luaK
 local luaY = {}
-local luaX = require(script.Parent.LuaX)
-local luaK = require(script.Parent.LuaK)(luaY)
-local luaP = require(script.Parent.LuaP)
+local luaX = package("LuaX")
+local luaK = package("LuaK")(luaY)
+local luaP = package("LuaP")
 
 --[[--------------------------------------------------------------------
 -- Expression descriptor
