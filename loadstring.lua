@@ -9,23 +9,25 @@
 	einsteinK was here again to fix a bug in LBI for if-statements
 --]]
 
-local waitDeps = {
-	'Rerubi';
-	'LuaK';
-	'LuaP';
-	'LuaU';
-	'LuaX';
-	'LuaY';
-	'LuaZ';
-}
+local req = (syn and syn.request) or (http and http.request) or http_request
 
-for i,v in pairs(waitDeps) do script:WaitForChild(v) end
+function GetHttp(URL)
+	local Data = nil
+	local Test = req({
+        Url = URL,
+        Method = 'GET',
+	})
+	for i,v in pairs(Test) do
+		Data = v
+	end
+	return Data
+end
 
-local luaX = require(script.LuaX)
-local luaY = require(script.LuaY)
-local luaZ = require(script.LuaZ)
-local luaU = require(script.LuaU)
-local rerubi = require(script.Rerubi)
+local luaX = GetHttp(URL)
+local luaY = GetHttp(URL)
+local luaZ = GetHttp(URL)
+local luaU = GetHttp(URL)
+local rerubi = GetHttp(URL)
 
 luaX:init()
 local LuaState = {}
