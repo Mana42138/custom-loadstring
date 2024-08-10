@@ -80,7 +80,7 @@ function GetHttp(URL)
 	for i,v in pairs(Test) do
 		Data = v
 	end
-	return Data
+	return loadstring(Data)
 end
 
 function package(name)
@@ -89,9 +89,9 @@ end
 
 --requires luaP, luaX, luaK
 local luaY = {}
-local luaX = package("LuaX")
+local luaX = package("LuaX")()
 local luaK = package("LuaK")(luaY)
-local luaP = package("LuaP")
+local luaP = package("LuaP")()
 
 --[[--------------------------------------------------------------------
 -- Expression descriptor
