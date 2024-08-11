@@ -3644,6 +3644,5 @@ function _gplau(str, env)
     end
 end
 
-function _gplau(klp) jpgdkl(klp)() end
 
-_gplau("print('plr')")() -- is there a way to get rid of ()?
+_gplau("print('plr')")()
